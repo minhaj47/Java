@@ -1,0 +1,22 @@
+Package & Class
+    -- P (Package)
+        -- A.java
+
+        --P1
+            --B.java
+
+        --P2
+            --C.java
+
+
+ParentDir/P>>javac A.java
+ParentDir/P/P1>>javac B.java 
+ParentDir>>javac "C:/My Documents/dir2/P/A.java" //if whitespace 
+ParentDir>>javac C:/Documents/dir2/P/A.java  // if not in subdirectory
+
+
+ParentDir>>java P.A
+ParentDir>>java P/A
+ParentDir>>java -cp C:/dir1/dir2/ P.A   // if not in subdirectory
+ParentDir>>java P.P1.B
+

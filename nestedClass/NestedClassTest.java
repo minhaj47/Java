@@ -1,0 +1,47 @@
+package java.nestedClass;
+
+class NestedClassTest{
+    public static void main(String[] args) {
+        A a=new A();
+        A.B b = a.new B();
+        a.m2("this is nestedClass");
+        b.m();
+        a.m();
+        A.C c = new A.C();
+        c.m();
+    }
+}
+
+class  A{
+    int i=10;
+    B b=new B();
+    static int k = 50;
+    class B{
+        int i = 30;
+        int j = 20;
+        void m()
+        {
+            m2("B"); 
+            A.this.m();
+            System.out.println("B.m(),B.i="+ i + " , B.j="+j);
+        }
+    }
+    static class C{
+        int i = 40;
+        static int k = 60;
+        void m(){
+            m3();
+            System.out.println("C.m(), A.k = " + A.k + ", C.k = " +k);
+        }
+    }
+    void m(){
+        m2("A");
+        System.out.println("A.m(), A.i = " + i + ", b.i = " + b.i + ", b.j = " + b.j);
+    }
+    void m2(String msg){
+        System.out.println("A.m2() calling:" + msg);
+    }
+    static void m3(){
+        System.out.println("m3 is calling : A.k: " + k +", C.k" + A.k);
+    }
+}
